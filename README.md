@@ -22,7 +22,7 @@ Tautan Drive mengikuti izin pemilik. HTML pada GitHub ditampilkan sebagai sumber
 | Reproduksi | Python 3.12/3.13; `uv.lock`, ekspor requirements dengan hash, 16 dependensi akar dipatok |
 | Kode bersama | Preprocessing, nested CV, kalibrasi, threshold, inferensi, keputusan, dan laporan dalam `src/banking_churn/` |
 | Notebook | 14 sel kode, 16 sel penjelasan, tujuh form; paket yang sama disematkan dengan hash agar mandiri di Colab |
-| Pengujian | 48 pengujian termasuk satu run sintetis lengkap; notebook dijalankan pada kernel sungguhan |
+| Pengujian | 49 pengujian termasuk satu run sintetis lengkap; notebook dijalankan pada kernel sungguhan |
 | CI | Matriks Windows/Linux × Python 3.12/3.13 memasang lock, menguji kode, dan menjalankan semua sel serta form dengan data sintetis |
 | Hasil | Grafik ROC/PR, ringkasan HTML/PDF, asumsi bisnis yang terlihat, JSON agregat, ZIP per run |
 
@@ -47,7 +47,7 @@ flowchart LR
 1. Klik **Open in Colab**, simpan salinan ke Drive, lalu **Runtime > Run all**.
 2. Pilih `reference_source` untuk CSV yang diberikan pengguna, atau `synthetic_smoke` untuk demo cepat.
 3. Bila unduhan sumber gagal, unggah CSV dari [tautan data pengguna](data/README.md) ke Files dan isi `Path_CSV`.
-4. Jika instalasi mengganti paket yang sudah dimuat, pilih **Runtime > Restart session**, lalu **Run all** kembali.
+4. Colab memasang lock analisis dari requirements-colab-lock.txt dan mempertahankan kernel/UI bawaan. Jika instalasi mengganti paket yang sudah dimuat, pilih **Runtime > Restart session**, lalu **Run all** kembali.
 5. Setelah training, ubah parameter form dan jalankan sel tersebut. Unduh hasil melalui panel Files.
 
 Tujuh form meliputi profil what-if, threshold, kapasitas, retensi/biaya, advisor anggaran,

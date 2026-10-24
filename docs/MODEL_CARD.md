@@ -5,6 +5,10 @@ menyematkan sumber modul yang sama dengan hash; CLI dan pengujian mengimpor pake
 Dependensi dikunci untuk Python 3.12/3.13. Metrik data referensi lokal sama dengan V6; perubahan ini
 meningkatkan reproduksi dan keterujian, bukan bukti performa lebih baik.
 
+Pada Colab, `requirements-colab-lock.txt` menyertakan closure dependensi analisis dari `uv.lock`
+dengan hash yang sama dan mempertahankan kernel/UI yang dikelola layanan. Paket kernel tidak
+dipasang ulang oleh notebook. Versi aktual analisis maupun paket host dicatat dalam metadata run.
+
 Mode `synthetic_smoke` sengaja memakai data fiktif dan pencarian kecil. Konteks tersebut terpisah
 dari `reference_source` dan `external_reviewed`, serta ditandai pada setiap ringkasan. Snapshot
 `docs/reports/` adalah agregat dari satu run referensi lokal yang identitas lengkapnya ada pada

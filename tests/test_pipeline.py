@@ -26,6 +26,12 @@ from banking_churn.training_core import choose_threshold
 
 
 class InputTests(unittest.TestCase):
+    def test_colab_analytics_lock_preserves_managed_kernel(self):
+        root=Path(__file__).resolve().parents[1]
+        content=(root/"requirements-colab-lock.txt").read_text(encoding="utf-8")
+        for host in ["ipykernel==","ipython==","tornado==","jupyter-client=="]:self.assertNotIn(host,content)
+        for model in ["numpy==2.5.4","scikit-learn==1.9.1","reportlab==5.1.0"]:self.assertIn(model,content)
+
     def test_invalid_training_parameters_fail_before_fitting(self):
         for key,value in [("seed",True),("n_jobs",0),("outer_folds",1),("search_trials",0),
                           ("capacity_fraction",np.nan),("min_validation_precision",1.1)]:

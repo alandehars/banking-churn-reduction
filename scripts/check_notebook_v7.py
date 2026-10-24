@@ -20,7 +20,9 @@ actual={p.name:p.read_text(encoding="utf-8") for p in (ROOT/"src/banking_churn")
 assert sources==actual,"Rebuild notebook after module edits: python scripts/sync_notebook_v7.py"
 assert hashes=={k:hashlib.sha256(v.encode()).hexdigest() for k,v in actual.items()}
 dependencies=ast.parse(next(c.source for c in code if c.id=="dependencies"))
-assert ast.literal_eval(dependencies.body[0].value)==(ROOT/"requirements-lock.txt").read_text(encoding="utf-8")
+assert ast.literal_eval(dependencies.body[0].value)==(ROOT/"requirements-colab-lock.txt").read_text(encoding="utf-8")
+locked=(ROOT/"requirements-colab-lock.txt").read_text(encoding="utf-8")
+for host in ["ipykernel==","ipython==","tornado==","jupyter-client=="]:assert host not in locked
 raw=(ROOT/"notebooks/banking_churn_v7.ipynb").read_text(encoding="utf-8")
 assert not re.search(r"[A-Z]:[\\/]Users[\\/]|[A-Z]:[\\/]File Alan|@gmail\.com|github_pat_|ghp_[A-Za-z0-9]{20,}",raw)
 assert "widgets" not in nb.metadata

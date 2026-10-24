@@ -3,7 +3,7 @@
 ## V7 - 24 Oktober 2026
 
 - Environment Windows Python 3.12.14 dipasang dari `uv.lock` dengan uv 0.13.5; 16 dependensi akar dipatok, dependensi transitif serta marker OS dicatat.
-- **48 pengujian lulus**: 30 kasus keputusan V6 dipertahankan, 18 kasus V7 mencakup training sintetis lengkap, nested CV, kalibrasi, threshold validation, jalur threshold tetap tanpa kalibrasi, reload bundle/helper, scoring CSV, serta laporan/ZIP.
+- **49 pengujian lulus**: 30 kasus keputusan V6 dipertahankan, 19 kasus V7 mencakup training sintetis lengkap, nested CV, kalibrasi, threshold validation, jalur threshold tetap tanpa kalibrasi, reload bundle/helper, scoring CSV, serta laporan/ZIP.
 - Notebook sintetis final: run `20261024T132911Z-366faab1`, **14 sel kode dieksekusi**, tujuh form, **13 pemeriksaan internal PASS**, tanpa error.
 - Notebook referensi menjalankan alur yang sama pada CSV pengguna. `docs/reports/public_summary.json` mencatat run sumber, hash data/split, versi aktual, konfigurasi, dan seluruh asumsi ringkasan yang dipublikasikan.
 - Hasil referensi lokal: HistGradientBoosting; ROC-AUC **0,8653021280**, AP **0,7164542530**, threshold F1 **0,29505758**; 449 kontak, TP 267, FP 182, FN 140. Metrik sama dengan V6 lokal, bukan klaim peningkatan akurasi.

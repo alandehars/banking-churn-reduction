@@ -3,10 +3,32 @@ import hashlib
 import json
 from pathlib import Path
 import textwrap
+import tomllib
 
 import nbformat as nbf
+from packaging.requirements import Requirement
 
 ROOT=Path(__file__).resolve().parents[1]
+
+
+def colab_requirements():
+    """Use the same locked analytics closure while preserving Colab's managed kernel/UI."""
+    roots={"numpy","pandas","scipy","scikit-learn","matplotlib","seaborn","joblib","xgboost",
+        "gdown","packaging","threadpoolctl","reportlab"}
+    packages=tomllib.loads((ROOT/"uv.lock").read_text(encoding="utf-8"))["package"]
+    selected=set(roots)
+    while True:
+        expanded=selected|{d["name"] for p in packages if p["name"] in selected for d in p.get("dependencies",[])}
+        if expanded==selected:break
+        selected=expanded
+    blocks=[];keep=False
+    for line in (ROOT/"requirements-lock.txt").read_text(encoding="utf-8").splitlines(keepends=True):
+        if line.strip() and not line[0].isspace() and not line.startswith("#"):
+            keep=Requirement(line.rstrip().rstrip(chr(92)).strip()).name in selected
+        if keep:blocks.append(line)
+    content="".join(blocks)
+    (ROOT/"requirements-colab-lock.txt").write_text(content,encoding="utf-8")
+    return content
 
 
 def build():
@@ -31,11 +53,11 @@ def build():
     md("environment_notes","""
     ## 1. Lingkungan yang dapat direproduksi
 
-    Python **3.12 dan 3.13** didukung; Colab terbaru memakai 3.13. Dependensi berikut berasal dari `uv.lock`; instalasi notebook memakai ekspor dengan hash, sedangkan CI memakai `uv sync --locked`. Windows dan Linux menjalankan versi akar yang sama, dengan dependensi sistem yang sesuai masing-masing OS/Python. Hasil numerik masih dapat sedikit berbeda menurut hardware.
+    Python **3.12 dan 3.13** didukung; Colab terbaru memakai 3.13. Dependensi analisis berikut berasal dari `uv.lock`; instalasi notebook memakai `requirements-colab-lock.txt` dengan hash, sedangkan CI memakai seluruh lock melalui `uv sync --locked`. Paket kernel/UI bawaan Colab (IPython, ipykernel, dan pengelola notebook) dipertahankan agar runtime dapat tersambung kembali. Versi aktual semuanya tetap dicatat pada run. Windows dan Linux menjalankan versi analisis yang sama, dengan dependensi sistem yang sesuai masing-masing OS/Python. Hasil numerik masih dapat sedikit berbeda menurut hardware.
 
     Sel ini memeriksa paket terpasang sebelum mengimpor modul analisis. Jika paket yang sudah dimuat perlu diganti, instalasi akan meminta **Runtime > Restart session**, lalu **Run all** lagi. Ini mencegah proses memakai campuran biner lama dan baru. Internet diperlukan hanya saat instalasi atau unduh CSV referensi; mode sintetis tidak mengunduh data.
     """)
-    lock=(ROOT/"requirements-lock.txt").read_text(encoding="utf-8")
+    lock=colab_requirements()
     deps='LOCKED_REQUIREMENTS = '+repr(lock)+'\n'+textwrap.dedent('''
         import importlib.metadata as package_metadata
         import os,subprocess,sys,tempfile

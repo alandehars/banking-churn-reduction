@@ -79,7 +79,11 @@ def model_specifications(config):
 def runtime_versions():
     packages=["numpy","pandas","scipy","scikit-learn","matplotlib","seaborn","joblib","xgboost", "gdown",
               "packaging","ipywidgets","threadpoolctl","nbformat","nbclient","ipykernel","reportlab"]
-    return {**{name:package_metadata.version(name) for name in packages},"python":platform.python_version(),"banking-churn-reduction":__version__}
+    versions={}
+    for name in packages:
+        try:versions[name]=package_metadata.version(name)
+        except package_metadata.PackageNotFoundError:versions[name]=None
+    return {**versions,"python":platform.python_version(),"banking-churn-reduction":__version__}
 
 
 def _segment_audit(frame,labels,prediction):
@@ -252,7 +256,7 @@ def _run_training(data_file,base,config,data_context,strict_reference):
     for key,table in tables.items():table.to_csv(directory/(key+".csv"),index=False,lineterminator="\n")
     for key,value in [("model_metadata",metadata),("test_scores",scores),("validation_checks",checks)]:
         _write_json(directory/(key+".json"),value)
-    (directory/"requirements-tested.txt").write_text("\n".join(f"{k}=={v}" for k,v in versions.items() if k not in {"python","banking-churn-reduction"})+"\n",encoding="utf-8")
+    (directory/"requirements-tested.txt").write_text("\n".join(f"{k}=={v}" for k,v in versions.items() if v is not None and k not in {"python","banking-churn-reduction"})+"\n",encoding="utf-8")
     _write_json(directory/"run_context.json",context)
     return TrainingRun(estimator,reloaded,v6_json(metadata),directory,frames,targets,
         {"validation":pv,"test":pt},tables,context,checks)
