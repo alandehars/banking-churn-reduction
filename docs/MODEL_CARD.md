@@ -1,4 +1,14 @@
-# Model card ringkas
+# Model card ringkas - V7
+
+V7 menyatukan training, inferensi, simulasi, dan ekspor dalam paket Python 7.0.0. Notebook mandiri
+menyematkan sumber modul yang sama dengan hash; CLI dan pengujian mengimpor paket tersebut.
+Dependensi dikunci untuk Python 3.12/3.13. Metrik data referensi lokal sama dengan V6; perubahan ini
+meningkatkan reproduksi dan keterujian, bukan bukti performa lebih baik.
+
+Mode `synthetic_smoke` sengaja memakai data fiktif dan pencarian kecil. Konteks tersebut terpisah
+dari `reference_source` dan `external_reviewed`, serta ditandai pada setiap ringkasan. Snapshot
+`docs/reports/` adalah agregat dari satu run referensi lokal yang identitas lengkapnya ada pada
+`public_summary.json`; snapshot repo tidak berubah mengikuti form pada salinan Colab pengguna.
 
 Tujuan: studi kasus pembelajaran/portofolio dan eksplorasi kebijakan prioritas retensi.
 Target `Exited` mengikuti file sumber; horizon waktunya belum terverifikasi.

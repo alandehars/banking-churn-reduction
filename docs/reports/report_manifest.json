@@ -1,0 +1,11 @@
+{
+  "run_id": "20261024T132929Z-2d83fbd6",
+  "source_sha256": "3996cd1fa372e0db0cd9c0ebac35bbd4e8e3c65fb942bb010c826e7b1eeef0a0",
+  "data_context": "reference_source",
+  "files": {
+    "executive_summary.html": "ccfaf25230cb25530b1e7d2b2e6049d08d2e3d02b6361bada3c18b9644ece00a",
+    "executive_summary.pdf": "8c8943fbab860d0b9616ed8dd02008707f49d2d38bbe24ee97a8369d6e2795e5",
+    "public_summary.json": "8152f902356814d56daf9f0e98f9fc75e15c2503a5baff5409f5b3a4eaf338dc"
+  },
+  "customer_records_included": false
+}

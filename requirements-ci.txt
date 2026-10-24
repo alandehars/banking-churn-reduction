@@ -1,5 +1,2 @@
-numpy>=1.24,<3
-pandas>=2,<4
-scikit-learn>=1.4,<2
-threadpoolctl>=3,<4
-nbformat>=5.9,<6
+# Compatibility entrypoint; CI uses uv sync --locked --all-groups.
+-r requirements-lock.txt

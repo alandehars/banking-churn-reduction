@@ -1,2 +1,2 @@
-"""Banking Churn V6 decision and simulation tools."""
-__version__ = "6.0.0"
+"""Shared Banking Churn V7 training, inference, decisions and reports."""
+__version__ = "7.0.0"

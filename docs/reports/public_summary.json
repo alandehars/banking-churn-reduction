@@ -1,0 +1,244 @@
+{
+  "report_version": 7,
+  "run_id": "20261024T132929Z-2d83fbd6",
+  "created_at_utc": "2026-10-24T13:30:33.841935+00:00",
+  "data_context": "reference_source",
+  "synthetic": false,
+  "dataset_rows": 10000,
+  "source_sha256": "3996cd1fa372e0db0cd9c0ebac35bbd4e8e3c65fb942bb010c826e7b1eeef0a0",
+  "source_reference_matches": true,
+  "model": "HistGradientBoosting",
+  "test_scores": {
+    "roc_auc": 0.8653021280139923,
+    "average_precision": 0.7164542529879605,
+    "brier_score": 0.09990587016556082,
+    "log_loss": 0.33101410164955974,
+    "test_rows": 2000,
+    "test_churn": 407,
+    "test_prevalence": 0.2035
+  },
+  "default_policy": "balanced_f1",
+  "threshold": 0.29505758183138187,
+  "default_metrics": {
+    "contacts": 449,
+    "tp": 267,
+    "fp": 182,
+    "fn": 140,
+    "tn": 1411,
+    "precision": 0.5946547884187082,
+    "recall": 0.6560196560196561,
+    "f1": 0.6238317757009346,
+    "contact_rate": 0.2245
+  },
+  "test_policies": [
+    {
+      "policy": "threshold_0_5",
+      "contacts": 252,
+      "tp": 197,
+      "fp": 55,
+      "fn": 210,
+      "precision": 0.7817460317460317,
+      "recall": 0.484029484029484
+    },
+    {
+      "policy": "precision_f05",
+      "contacts": 237,
+      "tp": 191,
+      "fp": 46,
+      "fn": 216,
+      "precision": 0.8059071729957806,
+      "recall": 0.4692874692874693
+    },
+    {
+      "policy": "balanced_f1",
+      "contacts": 449,
+      "tp": 267,
+      "fp": 182,
+      "fn": 140,
+      "precision": 0.5946547884187082,
+      "recall": 0.6560196560196561
+    },
+    {
+      "policy": "recall_f2",
+      "contacts": 861,
+      "tp": 346,
+      "fp": 515,
+      "fn": 61,
+      "precision": 0.4018583042973286,
+      "recall": 0.8501228501228502
+    },
+    {
+      "policy": "capacity_top_k",
+      "contacts": 400,
+      "tp": 251,
+      "fp": 149,
+      "fn": 156,
+      "precision": 0.6275,
+      "recall": 0.6167076167076168
+    }
+  ],
+  "config": {
+    "seed": 42,
+    "n_jobs": 2,
+    "outer_folds": 3,
+    "inner_folds": 3,
+    "search_trials": 6,
+    "calibrate": true,
+    "default_policy": "balanced_f1",
+    "capacity_fraction": 0.2,
+    "min_validation_precision": null,
+    "max_validation_contact_rate": null,
+    "bootstrap_resamples": 500,
+    "smoke": false
+  },
+  "package_version": "7.0.0",
+  "versions": {
+    "numpy": "2.5.4",
+    "pandas": "3.0.6",
+    "scipy": "1.18.1",
+    "scikit-learn": "1.9.1",
+    "matplotlib": "3.11.2",
+    "seaborn": "0.13.2",
+    "joblib": "1.6.0",
+    "xgboost": "3.4.1",
+    "gdown": "6.4.2",
+    "packaging": "26.3",
+    "ipywidgets": "8.1.9",
+    "threadpoolctl": "3.7.0",
+    "nbformat": "5.11.1",
+    "nbclient": "0.11.0",
+    "ipykernel": "7.4.0",
+    "reportlab": "5.1.0",
+    "python": "3.12.14",
+    "banking-churn-reduction": "7.0.0"
+  },
+  "split_fingerprints": {
+    "train": "0db3b62b6bb48256b440c735c7a3670c68538a50258c287c2887e5413100921e",
+    "validation": "585db1f2645817f589ce2c2135e27b1a9e87c603e88516be0f075f059bde520a",
+    "test": "df78914426ebc5de465ab2248b247d8512de9e29cd0f1abb92d104a7a81cf876"
+  },
+  "latest_sections": {
+    "advisor": {
+      "inputs": {
+        "max_contacts": 200,
+        "budget_um": 2500.0,
+        "contact_cost_um": 10.0,
+        "value_per_saved_um": 100.0,
+        "success_rate_assumption": 0.2,
+        "fixed_cost_um": 500.0,
+        "min_validation_precision": 0.0
+      },
+      "summary": {
+        "status": "conditional_candidate_found",
+        "recommended": {
+          "policy": "top_k_conditional_value",
+          "contacts": 200,
+          "tp": 163,
+          "fp": 37,
+          "fn": 244,
+          "validation_precision": 0.815,
+          "validation_recall": 0.4004914004914005,
+          "risk_sum": 158.11391112211854,
+          "expected_saved": 31.62278222442371,
+          "cost_um": 2500.0,
+          "expected_net_um": 662.2782224423709,
+          "resource_feasible": true,
+          "quality_feasible": true,
+          "eligible_campaign": true
+        },
+        "data_context": "validation",
+        "business_inputs_are_assumptions": true
+      }
+    },
+    "uncertainty": {
+      "inputs": {
+        "success_uniform": [
+          0.1,
+          0.3
+        ],
+        "cost_uniform_um": [
+          8.0,
+          12.0
+        ],
+        "benefit_uniform_um": [
+          80.0,
+          120.0
+        ],
+        "fixed_cost_um": 500.0,
+        "parameters_independent": true,
+        "outcomes_independent_given_parameters": true,
+        "parameter_ranges_are_user_assumptions": true,
+        "model_calibration_and_population_shift_uncertainty_included": false,
+        "baseline_risk_approximates_no_campaign": true
+      },
+      "summary": {
+        "results": {
+          "contacts": 200,
+          "risk_sum": 158.11391112211857,
+          "draws": 2000,
+          "seed": 42,
+          "mean_assumed_expected_net_um": 657.3547325400084,
+          "assumed_expected_net_q025_um": -1028.6739344817152,
+          "assumed_expected_net_q975_um": 2632.431677570329,
+          "outcome_net_q025_um": -1238.011158260233,
+          "outcome_net_q975_um": 3026.0787602936134,
+          "profit_fraction_under_assumptions": 0.68,
+          "profit_fraction_mc_se": 0.010430723848324237,
+          "parameter_expected_net_sd_um": 1002.5060238173137,
+          "conditional_outcome_rms_sd_um": 511.50628882120594,
+          "combined_sd_from_variance_decomposition_um": 1125.45857822207
+        },
+        "assumptions": {
+          "success_uniform": [
+            0.1,
+            0.3
+          ],
+          "cost_uniform_um": [
+            8.0,
+            12.0
+          ],
+          "benefit_uniform_um": [
+            80.0,
+            120.0
+          ],
+          "fixed_cost_um": 500.0,
+          "parameters_independent": true,
+          "outcomes_independent_given_parameters": true,
+          "parameter_ranges_are_user_assumptions": true,
+          "model_calibration_and_population_shift_uncertainty_included": false,
+          "baseline_risk_approximates_no_campaign": true
+        }
+      }
+    },
+    "batch": {
+      "inputs": {},
+      "summary": {
+        "data_context": "illustrative_validation",
+        "distribution_alert_assumption": 0.15,
+        "reference_features": "training",
+        "reference_scores": "validation",
+        "threshold_is_illustrative_not_statistical_significance": true,
+        "model_version": 7,
+        "model_run_id": "20261024T132929Z-2d83fbd6",
+        "rows": 200,
+        "prediction_warnings": [],
+        "status": "no_alert_at_selected_threshold",
+        "errors": [],
+        "scored_rows": 200,
+        "flagged_features": [],
+        "score_distribution_tv": 0.07800000000000001,
+        "mean_estimated_risk": 0.17615764210842122,
+        "flagged_for_review": 33,
+        "accuracy_not_estimated_without_labels": true,
+        "distribution_alert_proves_performance_drop": false
+      }
+    }
+  },
+  "limits": [
+    "No new temporal/external validation",
+    "No causal retention effect estimated",
+    "Business parameters remain assumptions"
+  ],
+  "customer_records_included": false,
+  "causal_campaign_effect_estimated": false
+}
