@@ -4,6 +4,7 @@ import hashlib
 from pathlib import Path
 import re
 import nbformat
+from sync_notebook_v7 import V7_MODULES
 
 ROOT=Path(__file__).resolve().parents[1]
 nb=nbformat.read(ROOT/"notebooks/banking_churn_v7.ipynb",as_version=4)
@@ -16,7 +17,9 @@ assert len([c for c in code if c.id.startswith("form_") and c.id!="form_state"])
 embedded=ast.parse(next(c.source for c in code if c.id=="shared_package"))
 sources=ast.literal_eval(embedded.body[0].value)
 hashes=ast.literal_eval(embedded.body[1].value)
-actual={p.name:p.read_text(encoding="utf-8") for p in (ROOT/"src/banking_churn").glob("*.py")}
+assert set(sources)==set(V7_MODULES),"Preserved V7 module inventory changed"
+# V7 is a preserved release. Later supplements have their own source-parity check.
+actual={name:(ROOT/"src/banking_churn"/name).read_text(encoding="utf-8") for name in sources}
 assert sources==actual,"Rebuild notebook after module edits: python scripts/sync_notebook_v7.py"
 assert hashes=={k:hashlib.sha256(v.encode()).hexdigest() for k,v in actual.items()}
 dependencies=ast.parse(next(c.source for c in code if c.id=="dependencies"))

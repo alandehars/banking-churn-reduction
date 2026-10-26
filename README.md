@@ -1,11 +1,28 @@
-# Banking Churn Reduction - V7
+# Banking Churn Reduction - V7 training & V8 audit
 
 [![CI](https://github.com/alandehars/banking-churn-reduction/actions/workflows/ci.yml/badge.svg)](https://github.com/alandehars/banking-churn-reduction/actions/workflows/ci.yml)
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/alandehars/banking-churn-reduction/blob/main/notebooks/banking_churn_v7.ipynb)
+[![V8 Audit & Pilot](https://img.shields.io/badge/Colab-V8%20Audit%20%26%20Pilot-orange)](https://colab.research.google.com/github/alandehars/banking-churn-reduction/blob/main/notebooks/banking_churn_v8.ipynb)
 
 Studi kasus churn perbankan dengan penjelasan Indonesia, tujuh form simulasi, dan laporan HTML/PDF.
 V7 memakai **kode yang sama untuk notebook, CLI, dan pengujian**, dengan dependensi terkunci.
 [Notebook V6](notebooks/banking_churn_v6.ipynb) tetap disimpan tanpa perubahan.
+
+**Baru: [notebook V8 — audit model beku dan rencana pilot](notebooks/banking_churn_v8.ipynb).**
+V8 menambah pemeriksaan overlap terhadap seluruh data development, interval ketidakpastian metrik,
+serta simulasi kebutuhan sampel dan power pilot retensi. Penjelasan, rumus, keterbatasan dan rekomendasi
+ada langsung dalam notebook. Model dan threshold V7 dipertahankan. Ini suplemen evaluasi, bukan model
+baru dengan klaim akurasi lebih tinggi. Lihat [panduan V8](docs/V8_GUIDE.md).
+
+Default V8 memakai data dan aturan skor fiktif. Untuk model sendiri, pilih `bundle_tepercaya` dan
+isi path bundle V7 serta CSV development yang hash-nya cocok; CSV batch baru opsional. Tanpa batch
+baru, notebook secara eksplisit menguji model tersebut dengan data sintetis. Status data baru tidak
+ditentukan dari nama mode: provenance, horizon/kematangan label, ID, hash dan overlap dilaporkan.
+`external_validation_verified` selalu `false`; pemeriksaan software masih membutuhkan review manusia.
+
+Verifikasi lokal V8: **68 tes lulus**, delapan sel selesai tanpa error pada kedua mode demonstrasi.
+Hasil tersimpan di folder project sebagai notebook baru. V8 belum diklaim telah dieksekusi di
+Google Colab. Bukti dan asumsi: [v8_verification.json](docs/v8_verification.json).
 
 [Pembaruan 26 Oktober 2026](docs/UPDATES.md): ekspor hasil Colab lengkap sudah diverifikasi
 di folder project lokal. Bukti run ada di [verification.json](docs/verification.json);
@@ -68,6 +85,7 @@ Dari root repo:
 uv sync --locked --all-groups
 uv run --locked banking-churn smoke --output-base artifacts/synthetic
 uv run --locked python scripts/run_notebook_v7.py --smoke
+uv run --locked python scripts/run_notebook_v8.py --smoke
 ```
 
 Mode smoke membangkitkan 1.000 catatan fiktif, menjalankan seluruh tahap, dan menandai semua laporan
@@ -111,8 +129,10 @@ dan ringkasan agregat yang diperiksa; CSV mentah, bundle, serta skor per pelangg
 ```sh
 uv run --locked python scripts/check_notebook.py
 uv run --locked python scripts/check_notebook_v7.py
+uv run --locked python scripts/check_notebook_v8.py
 uv run --locked python -m unittest discover -s tests -v
 uv run --locked python scripts/run_notebook_v7.py --smoke
+uv run --locked python scripts/run_notebook_v8.py --smoke
 ```
 
 Setelah mengubah modul, jalankan `uv run --locked python scripts/sync_notebook_v7.py` untuk
@@ -127,6 +147,9 @@ Notebook mencatat versi yang benar-benar digunakan pada metadata setiap run.
 | `src/banking_churn/inference.py` | Schema dan scoring bersama |
 | `src/banking_churn/reporting.py` | Ekspor agregat HTML/PDF |
 | `tests/test_pipeline.py` | Uji lengkap sintetis, reload, scoring, dan integritas laporan |
+| `src/banking_churn/v8_validation.py` | Audit model beku, overlap, kematangan label dan interval metrik |
+| `src/banking_churn/v8_pilot.py` | Perencanaan sampel dan simulasi pilot dua kelompok |
+| `tests/test_v8.py` | Kasus overlap, schema, label, interval, power dan false positive |
 | `docs/reports/` | Snapshot referensi agregat; tidak berubah mengikuti form lokal |
 | [VALIDATION](docs/VALIDATION.md) | Bukti eksekusi, protokol, dan batas pemeriksaan |
 | [MODEL_CARD](docs/MODEL_CARD.md) | Cakupan penggunaan dan keterbatasan |

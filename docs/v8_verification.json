@@ -1,0 +1,105 @@
+{
+  "notebook_version": 8,
+  "verified_on": "2026-10-26",
+  "unit_tests_passed": 68,
+  "execution_environment": "local_python_kernel",
+  "google_colab_v8_execution_verified": false,
+  "code_cells_executed": 8,
+  "errors": 0,
+  "explanation_cells": 8,
+  "public_source_without_outputs": true,
+  "public_notebook_sha256": "8ebca835dbfc9d1ffcd7ca0302812df4b06f2bccee25211a7178af4b64e3085d",
+  "local_executed_notebook": {
+    "filename": "Banking Churn Reduction Analysis - V8 Audit and Pilot 2026-10-26.ipynb",
+    "sha256": "3017e1fe5938621ac89228d87e55c0f052194add6bbba3ce4d519750e9411a09"
+  },
+  "frozen_model_demo": {
+    "run_id": "v8-5ee1f6d14a3f",
+    "model_run_id": "20261024T132929Z-2d83fbd6",
+    "model_refit": false,
+    "policy_unchanged": true,
+    "batch_context": "synthetic_demonstration",
+    "rows_scored": 1000,
+    "external_validation_verified": false
+  },
+  "fully_synthetic_demo_completed": true,
+  "overlap_test": {
+    "development_subset_rows": 50,
+    "matched_customer_ids": 50,
+    "matched_unique_feature_rows": 50
+  },
+  "pilot_default_assumptions": {
+    "control_rate_assumption": 0.2,
+    "treatment_rate_assumption": 0.17,
+    "absolute_reduction_assumption": 0.03,
+    "reduction_percentage_points": 3.0,
+    "relative_reduction_assumption": 0.15,
+    "target_power": 0.8,
+    "alpha": 0.05,
+    "analyzable_per_arm": 2626,
+    "enrolment_per_arm": 2918,
+    "total_enrolment": 5836,
+    "missing_outcome_fraction_assumption": 0.1,
+    "approximate_power": 0.8000139326872455,
+    "allocation": "1:1",
+    "test": "two_sided",
+    "method": "normal_independent_arcsine_h",
+    "effect_estimated_from_churn_model": false,
+    "causal_result_observed": false,
+    "limitations": [
+      "Independent customers, one pre-specified binary outcome and fixed horizon",
+      "No clustering, repeated testing or multiple-outcome adjustment",
+      "Inflation allows for missing outcomes; it does not remove missingness bias",
+      "Normal approximation; confirm the design before starting an experiment"
+    ]
+  },
+  "pilot_monte_carlo": {
+    "alternative": {
+      "synthetic_experiments": true,
+      "null_effect_simulation": false,
+      "assumed_control_rate": 0.2,
+      "assumed_treatment_rate": 0.17,
+      "analyzable_per_arm": 2626,
+      "repetitions": 5000,
+      "seed": 42,
+      "rejection_rate": 0.8024,
+      "monte_carlo_interval_95": [
+        0.7911326172789203,
+        0.8132030765847093
+      ],
+      "benefit_direction_detection_rate": 0.8024,
+      "observed_reduction_pp_quantiles": [
+        0.8377760853008377,
+        3.0464584920030466,
+        5.140898705255141
+      ],
+      "test": "two_sided_pooled_proportions_z",
+      "causal_result_observed": false
+    },
+    "null": {
+      "synthetic_experiments": true,
+      "null_effect_simulation": true,
+      "assumed_control_rate": 0.2,
+      "assumed_treatment_rate": 0.2,
+      "analyzable_per_arm": 2626,
+      "repetitions": 5000,
+      "seed": 43,
+      "rejection_rate": 0.0556,
+      "monte_carlo_interval_95": [
+        0.049582913854809285,
+        0.06229941963395749
+      ],
+      "benefit_direction_detection_rate": 0.028,
+      "observed_reduction_pp_quantiles": [
+        -2.208682406702209,
+        0.0,
+        2.246763137852247
+      ],
+      "test": "two_sided_pooled_proportions_z",
+      "causal_result_observed": false
+    }
+  },
+  "v7_executed_export_sha256": "0ca4bba01664a7d183ab6479fd929138e39bc07b385d50c6740b9e5c6042f0b9",
+  "saved_outputs_preserved": true,
+  "raw_data_model_and_customer_scores_published": false
+}

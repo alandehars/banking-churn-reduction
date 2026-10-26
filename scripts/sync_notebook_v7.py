@@ -9,6 +9,8 @@ import nbformat as nbf
 from packaging.requirements import Requirement
 
 ROOT=Path(__file__).resolve().parents[1]
+V7_MODULES=("__init__.py","config.py","data.py","decision_tools.py","inference.py","live.py",
+    "pipeline.py","preprocessing.py","reporting.py","schema.py","simulation.py","synthetic.py","training_core.py","cli.py")
 
 
 def colab_requirements():
@@ -89,7 +91,7 @@ def build():
         print("Python",sys.version.split()[0],"|",len(requirements),"distribusi terkunci cocok dengan environment ini.")
     ''').strip()
     code("dependencies",'#@title 1.1 - Verifikasi paket terkunci\n'+deps)
-    modules={p.name:p.read_text(encoding="utf-8") for p in sorted((ROOT/"src/banking_churn").glob("*.py"))}
+    modules={name:(ROOT/"src/banking_churn"/name).read_text(encoding="utf-8") for name in sorted(V7_MODULES)}
     hashes={name:hashlib.sha256(src.encode()).hexdigest() for name,src in modules.items()}
     bootstrap='PACKAGE_SOURCES = '+repr(modules)+'\nPACKAGE_SHA256 = '+repr(hashes)+'\n'+textwrap.dedent('''
         import hashlib,importlib,sys,tempfile

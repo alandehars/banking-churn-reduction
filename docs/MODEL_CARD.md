@@ -1,5 +1,11 @@
 # Model card ringkas - V7
 
+**Suplemen V8:** notebook audit dan perencanaan pilot memakai model/kebijakan V7 yang beku.
+Ia tidak melatih model baru. Pemeriksaan overlap, label matang dan interval mengidentifikasi
+celah bukti; `external_validation_verified` selalu false. Metadata sumber tetap deklarasi pengguna.
+Demo sintetis dan simulasi efek pilot tidak menjadi hasil validasi/retensi nyata. Lihat
+[V8_GUIDE](V8_GUIDE.md). Core paket serta prosedur training V7 di bawah tetap berlaku.
+
 V7 menyatukan training, inferensi, simulasi, dan ekspor dalam paket Python 7.0.0. Notebook mandiri
 menyematkan sumber modul yang sama dengan hash; CLI dan pengujian mengimpor paket tersebut.
 Dependensi dikunci untuk Python 3.12/3.13. Metrik data referensi lokal sama dengan V6; perubahan ini

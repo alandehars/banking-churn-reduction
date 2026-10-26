@@ -1,4 +1,23 @@
-# Bukti validasi V7 dan arsip V6
+# Bukti validasi V8, V7 dan arsip V6
+
+## Suplemen V8 - 26 Oktober 2026
+
+V8 telah dijalankan pada kernel Python lokal dalam dua mode: aturan skor/data fiktif sepenuhnya,
+dan bundle V7 tepercaya `20261024T132929Z-2d83fbd6` dengan 1.000 catatan sintetis. Masing-masing
+mengeksekusi delapan sel tanpa error. Model serta kebijakan tetap beku. Ini tidak menyatakan
+V8 telah dijalankan pada Google Colab atau tersedia data validasi bank yang baru.
+
+**68 pengujian lokal lulus**, mencakup 49 kasus lama dan 19 kasus V8. Pengujian baru memeriksa
+overlap subset/ID yang diganti, schema/ID tidak valid, label belum matang, metrik satu kelas,
+Wilson/denominator nol, bootstrap deterministik, kebutuhan sampel, power simulasi dan false positive.
+Simulasi subset CSV development berhasil menemukan 50 ID dan 50 baris fitur yang sama meskipun
+hash file subset berbeda. Pencocokan tidak membuktikan independensi bila nol overlap ditemukan.
+
+Notebook hasil V7 dipertahankan dengan SHA-256 yang sama. Bukti V8, hash notebook baru, asumsi
+pilot dan hasil Monte Carlo tersedia di [v8_verification.json](v8_verification.json). Rencana contoh
+memerlukan 2.626 outcome per kelompok dan 5.836 rekrutmen total setelah inflasi outcome hilang
+10%; churn kontrol 20%, target penurunan 3 poin persentase, alpha dua sisi 5%, power 80% adalah
+asumsi perencanaan. Ini bukan efek retensi yang diamati.
 
 ## Verifikasi penyimpanan - 26 Oktober 2026
 

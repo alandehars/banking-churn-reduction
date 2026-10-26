@@ -30,11 +30,14 @@ jobs:
           enable-cache: true
       - name: Install exact project and development dependencies
         run: uv sync --locked --all-groups
-      - name: Check preserved V6 and shared V7 notebook source
+      - name: Check preserved V6/V7 and V8 supplement source
         run: |
           uv run --locked python scripts/check_notebook.py
           uv run --locked python scripts/check_notebook_v7.py
+          uv run --locked python scripts/check_notebook_v8.py
       - name: Numerical and complete pipeline integration tests
         run: uv run --locked python -m unittest discover -s tests -v
       - name: Execute every V7 notebook cell and all seven forms on synthetic data
         run: uv run --locked python scripts/run_notebook_v7.py --smoke --output outputs/v7-ci.executed.ipynb
+      - name: Execute every V8 audit and pilot cell without retraining
+        run: uv run --locked python scripts/run_notebook_v8.py --smoke --output outputs/v8-ci.executed.ipynb
