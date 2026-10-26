@@ -1,5 +1,23 @@
 # Bukti validasi V7 dan arsip V6
 
+## Verifikasi penyimpanan - 26 Oktober 2026
+
+Ekspor hasil Google Colab run `20261024T135218Z-b828e79e` sudah tersimpan sebagai notebook
+lokal dalam folder project. Seluruh **14 sel kode memiliki output eksekusi, tanpa error**, dan
+**13 pemeriksaan internal lulus**. AST kode cocok dengan sumber V7 public, serta SHA-256 CSV
+cocok dengan snapshot referensi. Lingkungan run: Python 3.12.13, 34 dependensi analisis cocok
+dengan lock khusus Colab. Tanggal 26 Oktober merupakan tanggal verifikasi file, bukan run baru.
+
+Metrik run Colab sama dengan referensi lokal di bawah: ROC-AUC 0,8653021280 dan AP 0,7164542530.
+File lengkap yang diverifikasi adalah ekspor lokal; ini tidak menyatakan autosave output akhir
+Drive berhasil. [verification.json](verification.json) mencatat lokasi penyimpanan secara eksplisit
+dan mempertahankan bukti V6 sebagai arsip.
+
+[CI pada kode V7](https://github.com/alandehars/banking-churn-reduction/actions/runs/40099605097)
+lulus pada empat kombinasi Windows/Linux dan Python 3.12/3.13. Tiap job menjalankan 49 pengujian
+serta seluruh sel notebook sintetis. Pengujian sintetis membuktikan alur software, bukan validasi
+eksternal model. Skrip rilis lokal juga diperiksa agar tidak menghapus output notebook yang tersimpan.
+
 ## V7 - 24 Oktober 2026
 
 - Environment Windows Python 3.12.14 dipasang dari `uv.lock` dengan uv 0.13.5; 16 dependensi akar dipatok, dependensi transitif serta marker OS dicatat.

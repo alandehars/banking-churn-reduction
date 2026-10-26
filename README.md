@@ -7,6 +7,10 @@ Studi kasus churn perbankan dengan penjelasan Indonesia, tujuh form simulasi, da
 V7 memakai **kode yang sama untuk notebook, CLI, dan pengujian**, dengan dependensi terkunci.
 [Notebook V6](notebooks/banking_churn_v6.ipynb) tetap disimpan tanpa perubahan.
 
+[Pembaruan 26 Oktober 2026](docs/UPDATES.md): ekspor hasil Colab lengkap sudah diverifikasi
+di folder project lokal. Bukti run ada di [verification.json](docs/verification.json);
+persiapan rilis mempertahankan notebook lokal yang sudah berisi output.
+
 **Lihat hasil:** [ringkasan PDF](docs/reports/executive_summary.pdf) ·
 [HTML mandiri yang dapat diunduh](docs/reports/executive_summary.html) ·
 [angka dan asumsi agregat](docs/reports/public_summary.json) ·

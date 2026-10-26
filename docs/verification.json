@@ -1,29 +1,104 @@
 {
-  "revision": 6,
-  "local_run_id": "20261024T063308Z-a1691734",
-  "local_code_cells": 38,
-  "local_code_errors": 0,
-  "local_notebook_checks": 102,
-  "v6_unit_tests": 30,
-  "same_model_metrics_as_v5_local": true,
+  "revision": 7,
+  "delivery_verified_on": "2026-10-26",
+  "reference_model_retrained": false,
   "source_sha256": "3996cd1fa372e0db0cd9c0ebac35bbd4e8e3c65fb942bb010c826e7b1eeef0a0",
-  "cloud_run_verified": true,
-  "cloud_run_id": "20261024T063629Z-b9a63013",
-  "cloud_code_cells": 38,
-  "cloud_code_errors": 0,
-  "cloud_notebook_checks": 102,
-  "cloud_notebook_sha256": "f6b61020f7990d58fe05f121b94c97e491db33646b889ca5cc41f784f841be25",
-  "native_form_interactions": {
-    "advisor_zero_capacity": "no_campaign_no_fixed_cost",
-    "advisor_restored_capacity": 400,
-    "uncertainty_zero_contacts": "all_net_quantiles_zero",
-    "uncertainty_restored_contacts": 400,
-    "batch_synthetic_stress": "review_needed_Age_Balance_Geography",
-    "batch_restored_source": "Contoh validation",
-    "final_report_and_zip_refreshed": true
+  "reference_colab_run": {
+    "run_id": "20261024T135218Z-b828e79e",
+    "execution_date": "2026-10-24",
+    "code_cells": 14,
+    "errors": 0,
+    "checks_passed": 13,
+    "environment": "Python 3.12.13 | 34 distribusi terkunci cocok dengan environment ini.",
+    "source_matches_public_code": true,
+    "test_scores": {
+      "roc_auc": 0.8653021280139923,
+      "average_precision": 0.7164542529879605,
+      "brier_score": 0.09990587016556082,
+      "log_loss": 0.33101410164955974,
+      "test_rows": 2000,
+      "test_churn": 407,
+      "test_prevalence": 0.2035
+    }
   },
-  "public_notebook_outputs_removed": true,
-  "raw_data_and_model_artifacts_included": false,
-  "original_local_notebook_sha256": "3ee625bbb164d041a35e5b1d0d9a6cdfbb0ee838b55d545e2a5a740e969c7f7f",
-  "public_notebook_sha256": "9c2e2115b996419644382f36a530c98606b35809c4e951cd8fe976f1aefc8ac6"
+  "saved_export": {
+    "destination": "local_project_folder",
+    "notebook_filename": "Banking Churn Reduction Analysis - V7 2026-10-24.ipynb",
+    "complete": true,
+    "sha256": "0ca4bba01664a7d183ab6479fd929138e39bc07b385d50c6740b9e5c6042f0b9",
+    "drive_final_output_save_verified": false
+  },
+  "public_source": {
+    "notebook_sha256": "3c4fe53d96a43463e33dd7ef454794d3bc4610660fecbbae1a57d88b412c22b4",
+    "outputs_removed": true,
+    "raw_data_and_model_artifacts_included": false
+  },
+  "local_checks": {
+    "verified_on": "2026-10-26",
+    "unit_tests_passed": 49,
+    "public_notebook_source_checks_passed": true,
+    "saved_colab_export_check_passed": true
+  },
+  "ci_code_verification": {
+    "commit": "3b4f0daf26b408c2193a204de7722b51a5379fe5",
+    "run_id": 40099605097,
+    "tests_per_environment": 49,
+    "notebook_cells": 14,
+    "internal_checks": 13,
+    "jobs": [
+      {
+        "id": 120888847561,
+        "name": "test (ubuntu-latest, 3.13)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 120888847709,
+        "name": "test (windows-latest, 3.12)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 120888847723,
+        "name": "test (ubuntu-latest, 3.12)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 120888847757,
+        "name": "test (windows-latest, 3.13)",
+        "status": "completed",
+        "conclusion": "success"
+      }
+    ]
+  },
+  "v6_archive": {
+    "revision": 6,
+    "local_run_id": "20261024T063308Z-a1691734",
+    "local_code_cells": 38,
+    "local_code_errors": 0,
+    "local_notebook_checks": 102,
+    "v6_unit_tests": 30,
+    "same_model_metrics_as_v5_local": true,
+    "source_sha256": "3996cd1fa372e0db0cd9c0ebac35bbd4e8e3c65fb942bb010c826e7b1eeef0a0",
+    "cloud_run_verified": true,
+    "cloud_run_id": "20261024T063629Z-b9a63013",
+    "cloud_code_cells": 38,
+    "cloud_code_errors": 0,
+    "cloud_notebook_checks": 102,
+    "cloud_notebook_sha256": "f6b61020f7990d58fe05f121b94c97e491db33646b889ca5cc41f784f841be25",
+    "native_form_interactions": {
+      "advisor_zero_capacity": "no_campaign_no_fixed_cost",
+      "advisor_restored_capacity": 400,
+      "uncertainty_zero_contacts": "all_net_quantiles_zero",
+      "uncertainty_restored_contacts": 400,
+      "batch_synthetic_stress": "review_needed_Age_Balance_Geography",
+      "batch_restored_source": "Contoh validation",
+      "final_report_and_zip_refreshed": true
+    },
+    "public_notebook_outputs_removed": true,
+    "raw_data_and_model_artifacts_included": false,
+    "original_local_notebook_sha256": "3ee625bbb164d041a35e5b1d0d9a6cdfbb0ee838b55d545e2a5a740e969c7f7f",
+    "public_notebook_sha256": "9c2e2115b996419644382f36a530c98606b35809c4e951cd8fe976f1aefc8ac6"
+  }
 }
